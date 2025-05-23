@@ -1,7 +1,9 @@
 from django.views.generic import TemplateView
-from web_project import TemplateLayout
 from .models import College, Organization, OrgMember, Program, Student
+from web_project import TemplateLayout
 from django.shortcuts import render
+from django.db.models.functions import TruncDate
+from django.db.models import Count
 import json
 
 
@@ -19,5 +21,14 @@ class DashboardsView(TemplateView):
         context['organizations_count'] = Organization.objects.count()
         context['programs_count'] = Program.objects.count()
         context['students_count'] = Student.objects.count()
-
+        
+        daily_counts = (
+            Student.objects
+            .annotate(date=TruncDate('created_at'))
+            .values('date')
+            .annotate(count=Count('id'))
+            .order_by('date')
+        )
+        context['student_chart_labels'] = json.dumps([str(item['date']) for item in daily_counts])
+        context['student_chart_data'] = json.dumps([item['count'] for item in daily_counts])
         return context

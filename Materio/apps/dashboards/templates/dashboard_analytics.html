@@ -12,11 +12,13 @@
 
 {% block vendor_js %}
 {{ block.super }}
-<script src="{% static 'vendor/libs/apex-charts/apexcharts.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock vendor_js %}
 
 {% block page_js %}
 {{ block.super }}
+<script id="student-chart-labels" type="application/json">{{ student_chart_labels|safe }}</script>
+<script id="student-chart-data" type="application/json">{{ student_chart_data|safe }}</script>
 <script src="{% static 'js/dashboards-analytics.js' %}"></script>
 {% endblock page_js %}
 
@@ -135,10 +137,12 @@
         </div>
       </div>
       <div class="card-body pt-lg-2">
-        <div id="weeklyOverviewChart"></div>
+        <div id="weeklyOverviewChart">
+          <canvas id="weeklyOverviewLineChart"></canvas>
+        </div>
         <div class="mt-1 mt-md-3">
           <div class="d-flex align-items-center gap-4">
-            <h4 class="mb-0">45%</h4>
+            <h4 class="mb-0">{{ students_count }}</h4>
             <p class="mb-0">Your sales performance is 45% 😎 better compared to last month</p>
           </div>
           <div class="d-grid mt-3 mt-md-4">

@@ -13,175 +13,44 @@
   chartBgColor = config.colors.chartBgColor;
   bodyColor = config.colors.bodyColor;
 
-  // Weekly Overview Line Chart
-  // --------------------------------------------------------------------
-  const weeklyOverviewChartEl = document.querySelector('#weeklyOverviewChart'),
-    weeklyOverviewChartConfig = {
-      chart: {
-        type: 'bar',
-        height: 200,
-        offsetY: -9,
-        offsetX: -16,
-        parentHeightOffset: 0,
-        toolbar: {
-          show: false
-        }
-      },
-      series: [
-        {
-          name: 'Sales',
-          data: [32, 55, 45, 75, 55, 35, 70]
-        }
-      ],
-      colors: [chartBgColor],
-      plotOptions: {
-        bar: {
-          borderRadius: 8,
-          columnWidth: '30%',
-          endingShape: 'rounded',
-          startingShape: 'rounded',
-          colors: {
-            ranges: [
-              {
-                from: 75,
-                to: 80,
-                color: config.colors.primary
-              },
-              {
-                from: 0,
-                to: 73,
-                color: chartBgColor
-              }
-            ]
-          }
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      legend: {
-        show: false
-      },
-      grid: {
-        strokeDashArray: 8,
-        borderColor,
-        padding: {
-          bottom: -10
-        }
-      },
-      xaxis: {
-        axisTicks: { show: false },
-        crosshairs: { opacity: 0 },
-        axisBorder: { show: false },
-        categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        tickPlacement: 'on',
-        labels: {
-          show: false
+ // Weekly Overview Line Chart (Chart.js)
+    const weeklyOverviewChartEl = document.getElementById('weeklyOverviewLineChart');
+    if (weeklyOverviewChartEl) {
+      // Get dynamic data from template
+      const labels = JSON.parse(document.getElementById('student-chart-labels').textContent);
+      const data = JSON.parse(document.getElementById('student-chart-data').textContent);
+      new Chart(weeklyOverviewChartEl, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Students',
+            data: data,
+            borderColor: '#8e44ad',
+            backgroundColor: 'rgba(142,68,173,0.1)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 5,
+            pointBackgroundColor: '#8e44ad',
+          }]
         },
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        }
-      },
-      yaxis: {
-        min: 0,
-        max: 90,
-        show: true,
-        tickAmount: 3,
-        labels: {
-          formatter: function (val) {
-            return parseInt(val) + 'K';
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: true }
           },
-          style: {
-            fontSize: '13px',
-            fontFamily: 'Inter',
-            colors: labelColor
-          }
-        }
-      },
-      states: {
-        hover: {
-          filter: {
-            type: 'none'
-          }
-        },
-        active: {
-          filter: {
-            type: 'none'
-          }
-        }
-      },
-      responsive: [
-        {
-          breakpoint: 1500,
-          options: {
-            plotOptions: {
-              bar: {
-                columnWidth: '40%'
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 1200,
-          options: {
-            plotOptions: {
-              bar: {
-                columnWidth: '30%'
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 815,
-          options: {
-            plotOptions: {
-              bar: {
-                borderRadius: 5
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 768,
-          options: {
-            plotOptions: {
-              bar: {
-                borderRadius: 10,
-                columnWidth: '20%'
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 568,
-          options: {
-            plotOptions: {
-              bar: {
-                borderRadius: 8,
-                columnWidth: '30%'
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 410,
-          options: {
-            plotOptions: {
-              bar: {
-                columnWidth: '50%'
-              }
+          scales: {
+            x: {
+            },
+            y: {
+              beginAtZero: true
             }
           }
         }
-      ]
-    };
-  if (typeof weeklyOverviewChartEl !== undefined && weeklyOverviewChartEl !== null) {
-    const weeklyOverviewChart = new ApexCharts(weeklyOverviewChartEl, weeklyOverviewChartConfig);
-    weeklyOverviewChart.render();
-  }
+      });
+    }
 
   // Total Profit line chart
   // --------------------------------------------------------------------
