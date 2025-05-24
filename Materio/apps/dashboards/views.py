@@ -22,6 +22,26 @@ class DashboardsView(TemplateView):
         context['programs_count'] = Program.objects.count()
         context['students_count'] = Student.objects.count()
         
+        
+        
+        students = Student.objects.select_related('program').all()[:8]
+
+        context['student_data1'] = {
+            'firstname': students[0].firstname,
+            'middlename': students[0].middlename,
+            'lastname': students[0].lastname,
+            'student_id': students[0].student_id,
+            'program_name': students[0].program.prog_name
+        }
+        
+        context['student_data2'] = {
+            'firstname': students[1].firstname,
+            'middlename': students[1].middlename,
+            'lastname': students[1].lastname,
+            'student_id': students[1].student_id,
+            'program_name': students[1].program.prog_name
+        }
+        
         daily_counts = (
             Student.objects
             .annotate(date=TruncDate('created_at'))

@@ -626,7 +626,7 @@
           <thead>
             <tr>
               <th class="text-truncate">Name</th>
-              <th class="text-truncate">Student ID</th>
+              <th class="text-truncate">Cource</th>
               <th class="text-truncate">College</th>
               <th class="text-truncate">Organization</th>
             </tr>
@@ -639,12 +639,12 @@
                     <img src="{% static 'img/avatars/1.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Zuriel Montallana</h6>
-                    <small class="text-truncate">1</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data1.firstname }} {{ student_data1.middlename }} {{ student_data1.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data1.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">2022-9-0132</td>
+              <td class="text-truncate">{{ student_data1.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <span>College of Science</span>
@@ -659,19 +659,18 @@
                     <img src="{% static 'img/avatars/3.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Benedetto Rossiter</h6>
-                    <small class="text-truncate">@brossiter15</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data2.firstname }} {{ student_data2.middlename }} {{ student_data2.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data2.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">estelle.Bailey10@gmail.com</td>
+              <td class="text-truncate">{{ student_data2.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
-                  <i class="ri-edit-box-line text-warning ri-22px me-2"></i>
-                  <span>Editor</span>
+                  <span>College of Science</span>
                 </div>
               </td>
-              <td><span class="badge bg-label-success rounded-pill">Active</span></td>
+              <td>North Seek</span></td>
             </tr>
             <tr>
               <td>
