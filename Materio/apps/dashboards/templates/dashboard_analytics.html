@@ -679,19 +679,18 @@
                     <img src="{% static 'img/avatars/2.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Bentlee Emblin</h6>
-                    <small class="text-truncate">@bemblinf</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data3.firstname }} {{ student_data3.middlename }} {{ student_data3.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data3.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">milo86@hotmail.com</td>
+              <td class="text-truncate">{{ student_data3.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
-                  <i class="ri-computer-line text-danger ri-22px me-2"></i>
-                  <span>Author</span>
+                  <span>College of Nursing</span>
                 </div>
               </td>
-              <td><span class="badge bg-label-success rounded-pill">Active</span></td>
+              <td>Dog Moment</td>
             </tr>
             <tr>
               <td>

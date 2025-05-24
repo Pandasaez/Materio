@@ -32,6 +32,7 @@ class DashboardsView(TemplateView):
             'lastname': students[0].lastname,
             'student_id': students[0].student_id,
             'program_name': students[0].program.prog_name
+            
         }
         
         context['student_data2'] = {
@@ -42,6 +43,13 @@ class DashboardsView(TemplateView):
             'program_name': students[1].program.prog_name
         }
         
+        context['student_data3'] = {
+            'firstname': students[2].firstname,
+            'middlename': students[2].middlename,
+            'lastname': students[2].lastname,
+            'student_id': students[2].student_id,
+            'program_name': students[2].program.prog_name
+        }
         daily_counts = (
             Student.objects
             .annotate(date=TruncDate('created_at'))
