@@ -21,19 +21,17 @@ class DashboardsView(TemplateView):
         context['organizations_count'] = Organization.objects.count()
         context['programs_count'] = Program.objects.count()
         context['students_count'] = Student.objects.count()
-
-
-
+        
+        
+        
         students = Student.objects.select_related('program').all()[:8]
 
-<<<<<<< HEAD
         context['student_data1'] = {
             'firstname': students[0].firstname,
             'middlename': students[0].middlename,
             'lastname': students[0].lastname,
             'student_id': students[0].student_id,
-            'program_name': students[0].program.prog_name
-            
+            'program_name': students[0].program.prog_name,
         }
         
         context['student_data2'] = {
@@ -41,7 +39,7 @@ class DashboardsView(TemplateView):
             'middlename': students[1].middlename,
             'lastname': students[1].lastname,
             'student_id': students[1].student_id,
-            'program_name': students[1].program.prog_name
+            'program_name': students[1].program.prog_name,
         }
         
         context['student_data3'] = {
@@ -49,30 +47,50 @@ class DashboardsView(TemplateView):
             'middlename': students[2].middlename,
             'lastname': students[2].lastname,
             'student_id': students[2].student_id,
-            'program_name': students[2].program.prog_name
+            'program_name': students[2].program.prog_name,
         }
-=======
-        if len(students) >= 2:
-            context['student_data1'] = {
-                'firstname': students[0].firstname,
-                'middlename': students[0].middlename,
-                'lastname': students[0].lastname,
-                'student_id': students[0].student_id,
-                'program_name': students[0].program.prog_name
-            }
-
-            context['student_data2'] = {
-                'firstname': students[1].firstname,
-                'middlename': students[1].middlename,
-                'lastname': students[1].lastname,
-                'student_id': students[1].student_id,
-                'program_name': students[1].program.prog_name
-            }
-        else:
-            context['student_data1'] = None
-            context['student_data2'] = None
-
->>>>>>> 4d25e1e033e5a2c98976a7943d070302fd6580d8
+        
+        context['student_data4'] = {
+            'firstname': students[3].firstname,
+            'middlename': students[3].middlename,
+            'lastname': students[3].lastname,
+            'student_id': students[3].student_id,
+            'program_name': students[3].program.prog_name,
+        }
+        
+        context['student_data5'] = {
+            'firstname': students[4].firstname,
+            'middlename': students[4].middlename,
+            'lastname': students[4].lastname,
+            'student_id': students[4].student_id,
+            'program_name': students[4].program.prog_name,
+        }
+        
+        context['student_data6'] = {
+            'firstname': students[5].firstname,
+            'middlename': students[5].middlename,
+            'lastname': students[5].lastname,
+            'student_id': students[5].student_id,
+            'program_name': students[5].program.prog_name,
+        }
+        
+        context['student_data7'] = {
+            'firstname': students[6].firstname,
+            'middlename': students[6].middlename,
+            'lastname': students[6].lastname,
+            'student_id': students[6].student_id,
+            'program_name': students[6].program.prog_name,
+        }
+        
+        context['student_data8'] = {
+            'firstname': students[7].firstname,
+            'middlename': students[7].middlename,
+            'lastname': students[7].lastname,
+            'student_id': students[7].student_id,
+            'program_name': students[7].program.prog_name,
+        }
+        
+        
         daily_counts = (
             Student.objects
             .annotate(date=TruncDate('created_at'))
