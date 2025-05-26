@@ -28,13 +28,13 @@
   <div class="col-md-12 col-lg-4">
     <div class="card">
       <div class="card-body text-nowrap">
-        <h5 class="card-title mb-0 flex-wrap text-nowrap">Welcome to Palawan State University 🎉</h5>
-        <p class="mb-2">Palsu Growth chart</p>
-        <h4 class="text-primary mb-0">400+ Students</h4>
-        <p class="mb-2">78% of target 🚀</p>
-        <a href="javascript:;" class="btn btn-sm btn-primary">View Sales</a>
+        <h5 class="card-title mb-0 flex-wrap text-nowrap">Welcome Ma'am Tin!</h5>
+        <p class="mb-2">To Palsu Dashboard</p>
+        <h4 class="text-primary mb-0">Professor</h4>
+        <p class="mb-2">College of Science Professor</p>
+        <a href="javascript:;" class="btn btn-sm btn-primary">View Profile</a>
       </div>
-      <img src="{% static 'img/illustrations/trophy.png' %}" class="position-absolute bottom-0 end-0 me-5 mb-5" width="83" alt="view sales">
+      <img src="{% static 'img/illustrations/maam.png' %}" class="position-absolute bottom-0 end-0 me-5 mb-5" width="100" alt="view sales">
     </div>
   </div>
   <!--/ Congratulations card -->
@@ -246,7 +246,7 @@
           <div class="card-header d-flex align-items-center justify-content-between">
             <div class="avatar">
               <div class="avatar-initial bg-secondary rounded-circle shadow-xs">
-                <i class="ri-pie-chart-2-line ri-24px"></i>
+                <img src="{% static 'img/icons/brands/PSU.png' %}" class="img-fluid" alt="aws" height="30" width="30">
               </div>
             </div>
             <div class="dropdown">
@@ -261,11 +261,10 @@
             </div>
           </div>
           <div class="card-body">
-            <h6 class="mb-1">Total Profit</h6>
+            <h6 class="mb-1">Total Colleges</h6>
             <div class="d-flex flex-wrap mb-1 align-items-center">
               <h4 class="mb-0 me-2">{{ colleges_count }}</h4>
             </div>
-            <small>Weekly Project</small>
           </div>
         </div>
       </div>
@@ -297,7 +296,7 @@
           <div class="card-header d-flex align-items-center justify-content-between">
             <div class="avatar">
               <div class="avatar-initial bg-primary rounded-circle shadow-xs">
-                <i class="ri-file-word-2-line ri-24px"></i>
+                <img src="{% static 'img/avatars/program.png' %}" alt="Avatar" class="rounded-circle">
               </div>
             </div>
             <div class="dropdown">
@@ -312,25 +311,31 @@
             </div>
           </div>
           <div class="card-body">
-            <h6 class="mb-1">New Project</h6>
+            <h6 class="mb-1">Program</h6>
             <div class="d-flex flex-wrap mb-1 align-items-center">
-              <h4 class="mb-0 me-2">862</h4>
-              <p class="text-danger mb-0">-18%</p>
+              <h4 class="mb-0 me-2">{{ programs_count }}</h4>
             </div>
-            <small>Yearly Project</small>
           </div>
         </div>
       </div>
       <!--/ New Yearly Project -->
       <!-- Sessions chart -->
-      <div class="col-sm-6">
+     <div class="col-sm-6">
         <div class="card h-100">
-          <div class="card-header pb-0">
-            <h4 class="mb-0">2,856</h4>
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <div class="avatar">
+              <div class="avatar-initial bg-secondary rounded-circle shadow-xs">
+                <img src="{% static 'img/avatars/org.png' %}" alt="Avatar" class="rounded-circle">
+              </div>
+            </div>
+
+
           </div>
           <div class="card-body">
-            <div id="sessionsColumnChart" class="mb-3"></div>
-            <h6 class="text-center mb-0">Sessions</h6>
+            <h6 class="mb-1">Total Organization</h6>
+            <div class="d-flex flex-wrap mb-1 align-items-center">
+              <h4 class="mb-0 me-2">{{ organizations_count }}</h4>
+            </div>
           </div>
         </div>
       </div>
